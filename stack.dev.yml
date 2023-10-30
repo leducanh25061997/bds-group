@@ -1,0 +1,28 @@
+version: "3.7"
+
+services:
+
+  app:
+    image: ${DOCKER_IMAGE?Missing env DOCKER_IMAGE}
+    networks:
+      - traefik-public
+      - net_local
+    deploy:
+      replicas: 1
+      labels:
+      - "traefik.enable=true"
+      - traefik.docker.network=traefik-public
+      - traefik.constraint-label=traefik-public
+      - "traefik.http.routers.${PROJECT_NAME}_game.rule=Host(`${PROJECT_BASE_URL?Missing env}`)"
+      - "traefik.http.services.${PROJECT_NAME}_game.loadbalancer.server.port=${APP_PORT}"
+      - "traefik.http.routers.${PROJECT_NAME}_game.entrypoints=http"
+      - "traefik.http.routers.${PROJECT_NAME}_game_https.rule=Host(`${PROJECT_BASE_URL?Missing env}`)"
+      - "traefik.http.routers.${PROJECT_NAME}_game_https.tls=true"
+      - "traefik.http.routers.${PROJECT_NAME}_game_https.entrypoints=https"
+      - "traefik.http.routers.${PROJECT_NAME}_game_https.tls.certresolver=le"
+      #- "traefik.http.routers.${PROJECT_NAME}_game.middlewares=https-redirect"
+
+networks:
+  net_local:
+  traefik-public:
+    external: true

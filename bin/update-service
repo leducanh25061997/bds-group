@@ -1,0 +1,21 @@
+#!/bin/sh -e
+
+echo ""
+echo "Usage: sh bin/update-service.sh <service-name> [size]"
+echo ""
+
+[ -z "$1" ] && echo "Please provide a service" && exit 1
+
+[ -f .env ] && . ./.env
+
+[ -z "$STACK_NAME" ] && echo 'STACK_NAME is required' && exit 1
+
+CONTAINER_NAME=$1
+SERVICE_NAME="${STACK_NAME}_${CONTAINER_NAME}"
+REPLICAS="${CONTAINER_NAME}_REPLICAS"
+REPLICAS=${!REPLICAS}
+SIZE=${REPLICAS:-1}
+
+[ ! -z "$2" ] && SIZE=$2
+
+docker service scale $SERVICE_NAME=0 && docker service scale $SERVICE_NAME=$SIZE

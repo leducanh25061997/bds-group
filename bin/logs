@@ -1,0 +1,12 @@
+#!/bin/sh -e
+
+[ -z "$1" ] && echo "Please specify a service" && exit
+
+[ -f .env ] && . ./.env
+[ -z "$STACK_NAME" ] && echo 'STACK_NAME is required' && exit 1
+
+CONTAINER_NAME=$1
+SERVICE_NAME="${STACK_NAME}_${CONTAINER_NAME}"
+
+docker service logs -f $SERVICE_NAME
+

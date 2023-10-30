@@ -1,0 +1,70 @@
+import { NotifyState } from 'app/components/Notification/slice/types';
+import { SnackbarState } from 'app/components/Snackbar/slice/types';
+import { AuthState } from 'app/pages/Auth/slice/types';
+import { SettingState } from 'app/pages/Settings/slice/types';
+import { CustomerState } from 'app/pages/CustomerPotential/slice/types';
+import { DashboardsState } from 'app/pages/Dashboard/slice/types';
+import { ComisstionState } from 'app/pages/Comisstion/slice/types';
+import { ComisstionPolicyState } from 'app/pages/ComisstionPolicy/slice/types';
+import { LayoutsState } from 'app/pages/Layouts/slice/types';
+import { OrgchartState } from 'app/pages/Orgchart/slice/types';
+import { RealEstateState } from 'app/pages/Carrers/slice/types';
+import { StaffState } from 'app/pages/Staff/slice/types';
+import { ProjectState } from 'app/pages/Projects/slice/types';
+
+import { CategoryState } from 'app/pages/Reports/slice/types';
+import { EsalekitState } from 'app/pages/Esalekit/slice/types';
+import { TransactionManagementState } from 'app/pages/TransactionManagement/slice/type';
+import { CreateInformationProjectState } from 'app/pages/ManagementInformation/slice/types';
+import { ProcessManagementState } from 'app/pages/ProcessManagement/slice/type';
+
+import { receiptState } from 'app/pages/Payment/Receipts/slice/types';
+import { ProductTableState } from 'app/pages/ProductTableSetting/slice/types';
+import { TemplateProjectManagementState } from 'app/pages/TemplateProject/slice/types';
+import { ApartmentInformationState } from 'app/pages/TransactionManagement/components/ApartmentInformationManagement/slice/types';
+import { SalesProgramState } from 'app/pages/SalesProgram/slice/types';
+import { GroundProductTableState } from 'app/pages/GroundProductTable/slice/types';
+import { CityStarState } from 'app/pages/CityStar/slice/types';
+import { KpiMissionState } from 'app/pages/KPIMission/slice/types';
+import { refundState } from 'app/pages/Payment/Refunds/slice/types';
+import { SaleEventControlState } from 'app/pages/SaleEventControl/slice/types';
+import { SaleEventTransactionState } from 'app/pages/SaleEventTransaction/slice/types';
+
+import { LogImportCustomerState } from '../app/pages/LogImportCustomer/slice/types';
+import { LeadState } from 'app/pages/Leads/slice/types';
+import { VirtualTableState } from 'app/pages/virtualTable/slice/types';
+
+export interface RootState {
+  snackbar?: SnackbarState;
+  auth?: AuthState;
+  layouts?: LayoutsState;
+  ComisstionSlice?: ComisstionState;
+  ComisstionPolicySlice?: ComisstionPolicyState;
+  customerSlice?: CustomerState;
+  leadSlice?: LeadState;
+  settingSlice?: SettingState;
+  realEstateSlice?: RealEstateState;
+  staffSlice?: StaffState;
+  OrgchartSlice?: OrgchartState;
+  noticationSlice?: NotifyState;
+  dashboardsSlice?: DashboardsState;
+  categorySlice?: CategoryState;
+  ProjectSlice?: ProjectState;
+  EsalekitSlice?: EsalekitState;
+  transactionManagementSlice?: TransactionManagementState;
+  managementInformation?: CreateInformationProjectState;
+  processManagementSlice?: ProcessManagementState;
+  receipts?: receiptState;
+  refunds?: refundState;
+  productTableSlice?: ProductTableState;
+  managementTemplateProjectSlice?: TemplateProjectManagementState;
+  apartmentInformation?: ApartmentInformationState;
+  SalesProgramSlice?: SalesProgramState;
+  groundProductTable?: GroundProductTableState;
+  CityStarSlice?: CityStarState;
+  kpiMissionSlice?: KpiMissionState;
+  saleEventControl?: SaleEventControlState;
+  saleEventTransaction?: SaleEventTransactionState;
+  logImportCustomerSlice?: LogImportCustomerState;
+  virtualTable?: VirtualTableState;
+}

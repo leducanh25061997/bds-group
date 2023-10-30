@@ -1,0 +1,4 @@
+#!/bin/bash
+[ -z "$1" ] && echo "Please specify a CLI command" && exit
+DIR=`dirname "$0"`
+docker run -it --rm -v "$PWD":"/usr/src/app" -w /usr/src/app node:16-bullseye-slim "$@"
